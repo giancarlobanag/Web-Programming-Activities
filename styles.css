@@ -1,0 +1,112 @@
+#msg {
+	background: green;
+	padding: 1rem;
+	border-radius: 8px;
+}
+
+nav a{
+	color:#E1E100;
+}
+
+a:hover {
+	text-decoration: underline;
+	font-size: 25px;
+}
+
+body {
+    background: #063B00;
+    background: linear-gradient(180deg, rgba(6, 59, 0, 1) 0%, rgba(225, 225, 0, 1) 100%);
+    margin: 0;            /* Removes default browser margins */
+    min-height: 100vh;    /* Forces body to be at least the full height of the screen */
+    display: flex;        /* Helps the child container expand */
+    flex-direction: column;
+}
+
+:root {
+	--brand: #E1E100;
+	--space: 1rem;
+}
+
+#bscs {
+	color:black;
+	font-size: 20px;
+}
+
+#camN {
+	color: white;
+}
+
+*{
+	font-family: verdana, arial, tahoma;
+}
+
+.headertxt {
+	padding: 1rem;
+	color: #063B00;
+	
+}
+
+.bg1 {
+	background-color: white;
+
+}
+
+.btn { 
+	background: #E1E100;
+	background: var(--brand);
+	padding: var(--space);
+}
+
+.containerGrid {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "menu content post"
+        "footer footer footer";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto; /* Header & footer take needed space, middle row takes the rest */
+    flex-grow: 1;                      /* Forces the grid to stretch to the bottom of the body */
+}
+
+.containerGrid div {
+	padding: 10px;
+}
+
+.containerGrid div.header {
+	grid-area: header;
+}
+
+
+.containerGrid div.menu {
+	grid-area: menu;
+	background-color: white;
+}
+
+.containerGrid div.content {
+	grid-area: content;
+}
+
+.containerGrid div.post {
+	grid-area: post;
+}
+
+.containerGrid div.footer {
+	grid-area: footer;
+	background-color: white;
+	text-align: center;
+}
+
+.containerFlex {
+	display: flex;
+	background-color: white;
+}
+
+.containerFlex div {
+	margin: 10px;
+	font-size: 12px;
+}
+
+img {float: right;}
+
+p { color:white}
+h1 {text-align: center;}

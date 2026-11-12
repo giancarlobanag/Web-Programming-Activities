@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport"
+			content="width=device-width,
+			initial-scale=1" />
+		<title>Campus Notices</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="containerGrid">
+			<div class="header">
+				<div class="containerFlex">
+					<div><img src="dmmmsu.jpg", alt="logo", width="100px", height="100px"></div>
+					<div class="bg1"><header class="headertxt">
+					<h1>DON MARIANO MARCOS MEMORIAL STATE UNIVERSITY</h1></header></div>
+					
+				</div>
+			</div>
+			<div class="menu">
+				<div>
+					<nav><a href="notices.html">Read Notices</a> </nav>
+					<nav><a href="notices.html">Read Notices</a> </nav>
+					<nav><a href="notices.html">Read Notices</a> </nav>
+					<nav><a href="notices.html">Read Notices</a> </nav>
+				</div>
+			</div>
+
+			<div class="content">
+				
+				<h1 id="camN">Campus Notices</h1>
+				<img src="images.jpg", alt="logo", height="220px", width="400px">
+				<br>
+				<p>Responsible for delivering high-quality instruction, 
+					developing curriculum, mentoring students, and 
+					contributing to academic research and institutional service.</p>
+				<ul style="color: white;">Faculty
+					<li>Charlie Marzan</li>
+					<li>Hydee Limson</li>
+					<li>Joe Milan</li>
+				</ul>
+				
+			</div>
+
+			<div class="post">
+				<form action="/api/notices" method="post">
+					<label for="title", style="color: white;">TItle<label>
+					<input id="title" name="title" 
+						type="text" required />
+					<br><br>
+					<label for="msg">Message</label>
+					<br>
+					<textarea id="msg" name="message"></textarea>
+					<br>
+					<button class="btn" type="submit">Post notice</button>
+				</form>
+			</div>
+
+			<div class="footer">
+				<div><p id ="bscs">Bachelor in Science in Computer Science</p>
+				<p id ="bscs">The College of Computer Science</p> </div>
+			</div>
+		</div>
+
+		
+
+
+	</body>
+</html>
