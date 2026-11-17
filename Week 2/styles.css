@@ -1,0 +1,93 @@
+:root {
+  --brand: #0022fb;
+  --brand-dark: #163b69;
+  --brand-soft: #e0ecf8;
+  --on-brand: #ffffff;
+  --surface: #ffffff;
+  --page: #f4f7fa;
+  --text: #1f2933;
+  --border: #d9e2ec;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+}
+
+header {
+  background: var(--brand);
+  color: var(--on-brand);
+  padding: 16px 24px;
+}
+
+main {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.notice {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  background: var(--brand-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.85rem;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+}
+
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav li { display: inline-block; margin-right: 16px; }
+nav a { color: var(--on-brand); text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+
+table { border-collapse: collapse; width: 100%; background: var(--surface); }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+th { background: var(--brand-soft); }
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--brand); }
+
+button {
+  background: var(--brand);
+  color: var(--on-brand);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { background: var(--brand-dark); }
+
+/* Week 2, Step 6 (debugging experiment, now removed):
+   The test rule "p { color: red; }" overrode the colour of paragraphs in the
+   header, notices and footer because of INHERITANCE: the body's colour
+   (var(--text)) is only inherited, and a value inherited from a parent always
+   loses to any rule that targets the element directly, however simple the
+   selector. It was not specificity or source order that decided it. The .meta
+   line looked wrong because its .tag span inherited the red from its parent p.
+   The fix was a more targeted selector, not !important: the rule was
+   narrowed to ".notice > p:not(.meta)" while testing, and then deleted. */
