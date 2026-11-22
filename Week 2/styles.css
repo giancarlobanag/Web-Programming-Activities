@@ -82,6 +82,7 @@ button {
 }
 button:hover { background: var(--brand-dark); }
 
+
 /* Week 2, Step 6 (debugging experiment, now removed):
    The test rule "p { color: red; }" overrode the colour of paragraphs in the
    header, notices and footer because of INHERITANCE: the body's colour
