@@ -1,0 +1,165 @@
+:root {
+  --brand: #0022fb;
+  --brand-dark: #163b69;
+  --brand-soft: #e0ecf8;
+  --on-brand: #ffffff;
+  --surface: #ffffff;
+  --page: #f4f7fa;
+  --text: #1f2933;
+  --border: #d9e2ec;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  display: grid;              /* Week 3, Step 5: one column on phones */
+  gap: 16px;
+}
+
+img { max-width: 100%; height: auto; }
+
+header {
+  background: var(--brand);
+  color: var(--on-brand);
+  padding: 16px 24px;
+  display: flex;              /* Week 3, Step 2 */
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+header h1 { margin: 0; font-size: 1.5rem; }
+
+main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+  min-width: 0;               /* lets the grid cell shrink instead of overflowing */
+}
+
+/* Week 3, Step 3: notices in a grid, one column on phones */
+.notices {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+.notice {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 0;           /* the grid gap now handles the spacing */
+}
+
+.tag {
+  background: var(--brand-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.85rem;
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  display: inline-block;
+  padding: 8px 4px;           /* bigger tap target */
+  color: var(--on-brand);
+  text-decoration: none;
+}
+nav a:hover { text-decoration: underline; }
+
+table { border-collapse: collapse; width: 100%; background: var(--surface); display: block; overflow-x: auto; }
+
+aside {
+  min-width: 0;
+  margin: 0 16px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+aside h2 { margin-top: 0; }
+
+form { max-width: 600px; }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+th { background: var(--brand-soft); }
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--brand); }
+
+button {
+  background: var(--brand);
+  color: var(--on-brand);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { background: var(--brand-dark); }
+
+
+/* ===== Week 3: mobile-first media queries (min-width only) ===== */
+@media (min-width: 600px) {
+  .notices { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .notices { grid-template-columns: repeat(3, 1fr); }
+  header { padding: 24px 32px; }
+
+  body {
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+      "header header"
+      "main   aside"
+      "footer footer";
+  }
+  header { grid-area: header; }
+  main   { grid-area: main; margin: 0; max-width: none; padding: 0 0 0 16px; }
+  aside  { grid-area: aside; margin: 0 16px 0 0; align-self: start; }
+  footer { grid-area: footer; }
+}
+
+/* Challenge (optional): no media query needed for the column count
+   .notices { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+   The browser fits as many columns of at least 260px as the container
+   allows, then stretches them equally (1fr). A media query is still needed
+   for changes other than the column count, such as the sidebar areas, the
+   header padding, or forcing an exact number of columns at set widths. */
+
+/* Week 2, Step 6 (debugging experiment, now removed):
+   The test rule "p { color: red; }" overrode the colour of paragraphs in the
+   header, notices and footer because of INHERITANCE: the body's colour
+   (var(--text)) is only inherited, and a value inherited from a parent always
+   loses to any rule that targets the element directly, however simple the
+   selector. It was not specificity or source order that decided it. The .meta
+   line looked wrong because its .tag span inherited the red from its parent p.
+   The fix was a more targeted selector, not !important: the rule was
+   narrowed to ".notice > p:not(.meta)" while testing, and then deleted. */
